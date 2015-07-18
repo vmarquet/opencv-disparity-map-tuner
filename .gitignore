@@ -1,0 +1,9 @@
+# build directory
+build*/
+
+# temporary files
+*~
+.DS_Store
+
+# user specific configuration
+StereoCorrespondenceBMTuner/StereoCorrespondenceBMTuner.pro.user
