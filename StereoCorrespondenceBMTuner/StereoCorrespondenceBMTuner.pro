@@ -18,3 +18,11 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h
 
 FORMS    += mainwindow.ui
+
+# by default, Qt does not support pkg-config for Mac OS
+# so we must enable it
+QT_CONFIG -= no-pkg-config
+
+# we add the package opencv to pkg-config
+CONFIG += link_pkgconfig
+PKGCONFIG += opencv
