@@ -47,6 +47,10 @@ Pull requests are welcome.
 
 This software is inspired by another described [here](http://blog.martinperis.com/2011/08/opencv-stereo-matching.html). However, I wasn't satisfied with it, and it works only on [Gnome](https://www.gnome.org/) (used by [Ubuntu](http://www.ubuntu.com/desktop)).
 
+### TODO
+
+* accept image drops for left and right image areas
+
 
 Licence
 -------
