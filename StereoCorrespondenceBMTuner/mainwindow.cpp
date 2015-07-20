@@ -49,11 +49,21 @@ void MainWindow::on_pushButton_left_clicked()
     if (filename.isNull() || filename.isEmpty())
         return;
 
+    ///// Qt display stuff
+
     // we load the picture from the file, to display it in a QLabel in the GUI
     QImage left_picture;
     left_picture.load(filename);
 
-    ui->label_image_left->setPixmap(QPixmap::fromImage(left_picture));
+    // some computation to resize the image if it is too big to fit in the GUI
+    QPixmap left_pixmap = QPixmap::fromImage(left_picture);
+    int max_width  = std::min(ui->label_image_left->maximumWidth(), left_picture.width());
+    int max_height = std::min(ui->label_image_left->maximumHeight(), left_picture.height());
+    ui->label_image_left->setPixmap(left_pixmap.scaled(max_width, max_height, Qt::KeepAspectRatio));
+
+    set_SADWindowSize();  // the SAD window size parameter depends on the size of the image
+
+    ///// OpenCV disparity map computation
 
     // we convert filename from QString to std::string (needed by OpenCV)
     std::string filename_s = filename.toUtf8().constData();
@@ -63,7 +73,6 @@ void MainWindow::on_pushButton_left_clicked()
     cv::cvtColor(mat, mat, CV_BGR2GRAY);  // we convert to gray, needed to compute depth map
     this->left_image = mat;
 
-    set_SADWindowSize();
     compute_depth_map();
 }
 
@@ -77,11 +86,21 @@ void MainWindow::on_pushButton_right_clicked()
     if (filename.isNull() || filename.isEmpty())
         return;
 
+    ///// Qt display stuff
+
     // we load the picture from the file, to display it in a QLabel in the GUI
     QImage right_picture;
     right_picture.load(filename);
 
-    ui->label_image_right->setPixmap(QPixmap::fromImage(right_picture));
+    // some computation to resize the image if it is too big to fit in the GUI
+    QPixmap right_pixmap = QPixmap::fromImage(right_picture);
+    int max_width  = std::min(ui->label_image_right->maximumWidth(), right_picture.width());
+    int max_height = std::min(ui->label_image_right->maximumHeight(), right_picture.height());
+    ui->label_image_right->setPixmap(right_pixmap.scaled(max_width, max_height, Qt::KeepAspectRatio));
+
+    set_SADWindowSize();  // the SAD window size parameter depends on the size of the image
+
+    ///// OpenCV disparity map computation
 
     // we convert filename from QString to std::string (needed by OpenCV)
     std::string filename_s = filename.toUtf8().constData();
@@ -91,7 +110,6 @@ void MainWindow::on_pushButton_right_clicked()
     cv::cvtColor(mat, mat, CV_BGR2GRAY);  // we convert to gray, needed to compute depth map
     this->right_image = mat;
 
-    set_SADWindowSize();
     compute_depth_map();
 }
 
@@ -131,6 +149,11 @@ void MainWindow::compute_depth_map() {
     // we finally can convert the image to a QPixmap and display it
     QImage disparity_image = QImage((unsigned char*) disp_color.data, disp_color.cols, disp_color.rows, QImage::Format_RGB888);
     QPixmap disparity_pixmap = QPixmap::fromImage(disparity_image);
+
+    // some computation to resize the image if it is too big to fit in the GUI
+    int max_width  = std::min(ui->label_depth_map->maximumWidth(),  disparity_image.width());
+    int max_height = std::min(ui->label_depth_map->maximumHeight(), disparity_image.height());
+    ui->label_depth_map->setPixmap(disparity_pixmap.scaled(max_width, max_height, Qt::KeepAspectRatio));
 
     ui->label_depth_map->setPixmap(disparity_pixmap);
 }

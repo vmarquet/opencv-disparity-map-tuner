@@ -426,8 +426,8 @@
        <widget class="QLabel" name="label_depth_map">
         <property name="maximumSize">
          <size>
-          <width>640</width>
-          <height>480</height>
+          <width>480</width>
+          <height>360</height>
          </size>
         </property>
         <property name="text">
@@ -442,8 +442,8 @@
        <widget class="QLabel" name="label_image_right">
         <property name="maximumSize">
          <size>
-          <width>640</width>
-          <height>480</height>
+          <width>480</width>
+          <height>360</height>
          </size>
         </property>
         <property name="text">
@@ -458,8 +458,8 @@
        <widget class="QLabel" name="label_image_left">
         <property name="maximumSize">
          <size>
-          <width>640</width>
-          <height>480</height>
+          <width>480</width>
+          <height>360</height>
          </size>
         </property>
         <property name="text">
