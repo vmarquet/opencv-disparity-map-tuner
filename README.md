@@ -6,7 +6,7 @@ Description
 
 A GUI to update the parameters, and watch the results live, of the [block-matching algorithm](http://docs.opencv.org/modules/calib3d/doc/camera_calibration_and_3d_reconstruction.html#stereobm-operator) of [OpenCV](http://opencv.org/), used for computing depth maps when doing stereovision.
 
-![example screenshot](https://drive.google.com/uc?export=view&id=0B31-CIvNW1LdMHlENWo5eHVfNmc)
+![example screenshot](https://drive.google.com/uc?export=view&id=0B31-CIvNW1LdWUFpTkxoR0dXYkk)
 
 
 Installation
