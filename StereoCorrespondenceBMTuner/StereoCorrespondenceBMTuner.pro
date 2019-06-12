@@ -13,7 +13,7 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+		mainwindow.cpp
 
 HEADERS  += mainwindow.h
 
@@ -25,4 +25,5 @@ QT_CONFIG -= no-pkg-config
 
 # we add the package opencv to pkg-config
 CONFIG += link_pkgconfig
-PKGCONFIG += opencv
+PKGCONFIG += opencv4
+INCLUDEPATH +=/usr/local/Cellar/opencv/4.1.0_2/include/opencv4
