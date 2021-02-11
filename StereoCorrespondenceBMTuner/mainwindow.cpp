@@ -154,8 +154,6 @@ void MainWindow::compute_depth_map() {
     int max_width  = std::min(ui->label_depth_map->maximumWidth(),  disparity_image.width());
     int max_height = std::min(ui->label_depth_map->maximumHeight(), disparity_image.height());
     ui->label_depth_map->setPixmap(disparity_pixmap.scaled(max_width, max_height, Qt::KeepAspectRatio));
-
-    ui->label_depth_map->setPixmap(disparity_pixmap);
 }
 
 
